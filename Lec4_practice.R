@@ -33,3 +33,22 @@ a = km.fit$cluster-1
 b= df$diagnosis
 
 max(mean(a==b),mean(1-a==b))
+
+#[실습2 해설] 데이터 마이닝 결과 평가
+library(tidyverse)
+df = read_csv("Breast_cancer_data.csv")
+
+#1. 다중 로지스틱 회귀모형 적합
+glm.fit = glm(diagnosis~.,data=df, family=binomial)
+
+
+#2. 0.5를 기준으로 나눔
+pos = glm.fit$fitted.values >=  0.5
+## 경계값 입력
+neg = glm.fit$fitted.values <   0.5
+## 경계값 입력
+
+#3. table()함수를 이용하여 행렬 형태로 표현하고 정확도 계산
+table(df$diagnosis, pos)
+acc = (189+341) / (189+341+23+16)
+acc
