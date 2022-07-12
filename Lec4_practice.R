@@ -52,3 +52,4 @@ neg = glm.fit$fitted.values <   0.5
 table(df$diagnosis, pos)
 acc = (189+341) / (189+341+23+16)
 acc
+
