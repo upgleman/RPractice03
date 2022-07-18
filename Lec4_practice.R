@@ -23,6 +23,7 @@ is_significant = TRUE
 
 rf.fit = randomForest(diagnosis~.,data=df)
 rf.fit
+summary(rf.fit)
 # 4.
 # center 갯수를 특정해줘야 합니다.
 set.seed(3) # 재생산성을 위해 seed 값을 고정해줍니다.
@@ -31,7 +32,8 @@ km.fit
 # 5.
 a = km.fit$cluster-1
 b= df$diagnosis
-
+# mean_a = mean(a==b)
+# mean_b = mean(1-a==b)
 max(mean(a==b),mean(1-a==b))
 
 #[실습2 해설] 데이터 마이닝 결과 평가
